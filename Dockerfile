@@ -9,6 +9,7 @@
 #
 # Also installed plugins:
 #    - https://github.com/y-ken/fluent-plugin-watch-process
+#    - https://github.com/frsyuki/fluent-plugin-multiprocess
 #    - https://github.com/kiyoto/fluent-plugin-docker-metrics
 #    - https://github.com/uken/fluent-plugin-elasticsearch
 #    - https://github.com/htgc/fluent-plugin-kafka/
@@ -62,6 +63,7 @@ RUN apt-get update  && \
         apt-get install -y -q gcc make libcurl4-gnutls-dev  && \
     $FLUENT_GEM install \
         fluent-plugin-watch-process   \
+        fluent-plugin-multiprocess    \
         fluent-plugin-docker-metrics  \
         fluent-plugin-elasticsearch   \
         fluent-plugin-kafka           \
