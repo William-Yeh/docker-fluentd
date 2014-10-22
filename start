@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Simple wrapper for "td-agent" executable.
+#
+# Usage:  start  [options]
+#
+# Note: use '--help' to see full options.
+#
+
+/opt/td-agent/embedded/bin/ruby  /usr/sbin/td-agent  --use-v1-config  $@
