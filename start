@@ -7,4 +7,4 @@
 # Note: use '--help' to see full options.
 #
 
-/opt/td-agent/embedded/bin/ruby  /usr/sbin/td-agent  --use-v1-config  $@
+exec /opt/td-agent/embedded/bin/ruby  /usr/sbin/td-agent  --use-v1-config  "$@"

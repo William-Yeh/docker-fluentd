@@ -8,13 +8,14 @@
 #    - http://packages.treasuredata.com.s3.amazonaws.com/
 #
 # Also installed plugins:
+#    - https://github.com/tagomoris/fluent-plugin-secure-forward
 #    - https://github.com/y-ken/fluent-plugin-watch-process
 #    - https://github.com/frsyuki/fluent-plugin-multiprocess
 #    - https://github.com/kiyoto/fluent-plugin-docker-metrics
 #    - https://github.com/uken/fluent-plugin-elasticsearch
 #    - https://github.com/htgc/fluent-plugin-kafka/
 #
-# Version 0.1
+# Version 0.2
 #
 
 # pull base image
@@ -22,8 +23,10 @@ FROM debian:jessie
 MAINTAINER William Yeh <william.pjyeh@gmail.com>
 
 
-ENV FLUENT_GEM  /opt/td-agent/embedded/bin/fluent-gem
-ENV DEB_FILE    http://packages.treasuredata.com.s3.amazonaws.com/2/debian/wheezy/pool/contrib/t/td-agent/td-agent_2.1.1-0_amd64.deb
+ENV EMBEDDED_BIN  /opt/td-agent/embedded/bin
+ENV FLUENT_GEM    $EMBEDDED_BIN/fluent-gem
+#ENV FLUENT_GEM    /opt/td-agent/embedded/bin/fluent-gem
+ENV DEB_FILE      http://packages.treasuredata.com.s3.amazonaws.com/2/debian/wheezy/pool/contrib/t/td-agent/td-agent_2.1.1-0_amd64.deb
 
 
 
@@ -62,6 +65,7 @@ RUN apt-get update  && \
     DEBIAN_FRONTEND=noninteractive \
         apt-get install -y -q gcc make libcurl4-gnutls-dev  && \
     $FLUENT_GEM install \
+        fluent-plugin-secure-forward  \
         fluent-plugin-watch-process   \
         fluent-plugin-multiprocess    \
         fluent-plugin-docker-metrics  \
@@ -73,7 +77,8 @@ RUN apt-get update  && \
     \
     echo "==> Clean up..."  && \
     apt-get remove -y --auto-remove curl gcc make ruby-dev libgssglue1  && \
-    apt-get clean
+    apt-get clean  && \
+    rm -rf /var/lib/apt/lists/*
 
 
 
@@ -92,7 +97,7 @@ EXPOSE 24224 9880 24230
 
 
 # for convenience
-ENV PATH /opt:$PATH
+ENV PATH /opt:$EMBEDDED_BIN:$PATH
 COPY usage.sh       /opt/
 COPY start          /opt/
 COPY td-agent.conf            /etc/td-agent/

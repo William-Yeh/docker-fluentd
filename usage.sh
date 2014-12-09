@@ -42,14 +42,14 @@ Usage
         williamyeh/fluentd  start
 
 
-    # start Fluentd daemon with a sample config 'httppost-to-stdout.conf'
+    # start Fluentd daemon with our sample config 'httppost-to-stdout.conf'
     $ docker run -d  --name fluentd               \\
         -p 9880:9880                              \\
         williamyeh/fluentd  start                 \\
             --config httppost-to-stdout.conf
 
 
-    # start Fluentd daemon with a sample config 'httppost-to-file.conf'
+    # start Fluentd daemon with our sample config 'httppost-to-file.conf'
     $ docker run -d  --name fluentd               \\
         -p 9880:9880                              \\
         -v /myproject/data:/data                  \\
@@ -62,14 +62,14 @@ Usage
         williamyeh/fluentd  start  --dry-run
 
 
-    # start Fluentd daemon with customized "td-agent.conf" from host OS;
+    # start Fluentd daemon with your customized "td-agent.conf" from host OS;
     # also load extra plugins in the "plugin" subdirectory:
     $ docker run -d  --name fluentd                  \\
         -v /myproject/conf/fluentd:/etc/td-agent:ro  \\
         williamyeh/fluentd  start
 
 
-    # start Fluentd daemon with customized conf filename from host OS;
+    # start Fluentd daemon with your customized conf filename from host OS;
     # also load extra plugins in the "plugin" subdirectory:
     $ docker run -d  --name fluentd                  \\
         -v /myproject/conf/fluentd:/etc/td-agent:ro  \\
