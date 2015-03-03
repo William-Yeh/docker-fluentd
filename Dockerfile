@@ -26,7 +26,7 @@ MAINTAINER William Yeh <william.pjyeh@gmail.com>
 ENV EMBEDDED_BIN  /opt/td-agent/embedded/bin
 ENV FLUENT_GEM    $EMBEDDED_BIN/fluent-gem
 #ENV FLUENT_GEM    /opt/td-agent/embedded/bin/fluent-gem
-ENV DEB_FILE      http://packages.treasuredata.com.s3.amazonaws.com/2/debian/wheezy/pool/contrib/t/td-agent/td-agent_2.1.1-0_amd64.deb
+ENV DEB_FILE      http://packages.treasuredata.com.s3.amazonaws.com/2/debian/wheezy/pool/contrib/t/td-agent/td-agent_2.1.4-0_amd64.deb
 
 
 
