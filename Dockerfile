@@ -70,7 +70,6 @@ RUN apt-get update  && \
         fluent-plugin-multiprocess    \
         fluent-plugin-docker-metrics  \
         fluent-plugin-elasticsearch   \
-        fluent-plugin-kafka           \
         --no-rdoc --no-ri  && \
     \
     \
@@ -80,6 +79,10 @@ RUN apt-get update  && \
     apt-get clean  && \
     rm -rf /var/lib/apt/lists/*
 
+
+#RUN $FLUENT_GEM install \
+#        fluent-plugin-kafka           \
+#        --no-rdoc --no-ri 
 
 
 # configure
